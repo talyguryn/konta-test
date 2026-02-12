@@ -1,6 +1,7 @@
 services:
   nginx-guryn-ru:
     labels:
+      - konta.managed=true
       - traefik.http.routers.nginx-guryn-ru.rule=Host(`nginx.guryn.ru`)
       - traefik.http.routers.nginx-guryn-ru.entrypoints=https
       - traefik.http.routers.nginx-guryn-ru.service=nginx-guryn-ru
