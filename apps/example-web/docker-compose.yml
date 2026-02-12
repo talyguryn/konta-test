@@ -1,0 +1,27 @@
+services:
+  web:
+    labels:
+      - traefik.http.routers.konta-guryn-ru.rule=Host(`konta.guryn.ru`)
+      - traefik.http.routers.konta-guryn-ru.entrypoints=https
+      - traefik.http.routers.konta-guryn-ru.service=konta-guryn-ru
+      - traefik.http.services.konta-guryn-ru.loadbalancer.server.port=80
+      - traefik.http.routers.konta-guryn-ru.tls=true
+      - traefik.http.routers.konta-guryn-ru.tls.certresolver=letsencrypt
+    image: nginx:alpine
+    container_name: konta-web
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    restart: unless-stopped
+    healthcheck:
+      test:
+        ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true

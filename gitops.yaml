@@ -1,0 +1,20 @@
+version: v1
+
+repository:
+  url: https://github.com/talyguryn/konta-test
+  branch: main
+  path: apps
+  interval: 120
+
+deploy:
+  atomic: true
+  remove_orphans: true
+
+hooks:
+  pre: hooks/pre.sh
+  success: hooks/success.sh
+  failure: hooks/failure.sh
+
+logging:
+  level: info
+  format: text
