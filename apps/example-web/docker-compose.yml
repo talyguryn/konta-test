@@ -1,6 +1,7 @@
 services:
   web:
     labels:
+      - konta.managed=true
       - traefik.http.routers.konta-guryn-ru.rule=Host(`konta.guryn.ru`)
       - traefik.http.routers.konta-guryn-ru.entrypoints=https
       - traefik.http.routers.konta-guryn-ru.service=konta-guryn-ru

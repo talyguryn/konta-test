@@ -8,7 +8,6 @@ repository:
 
 deploy:
   atomic: true
-  remove_orphans: true
 
 hooks:
   pre: hooks/pre.sh
