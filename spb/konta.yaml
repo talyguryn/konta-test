@@ -3,16 +3,16 @@ version: v1
 repository:
   url: https://github.com/talyguryn/konta-test
   branch: main
-  path: apps
+  path: spb/apps
   interval: 120
 
 deploy:
   atomic: true
 
 hooks:
-  pre: hooks/pre.sh
-  success: hooks/success.sh
-  failure: hooks/failure.sh
+  pre: spb/hooks/pre.sh
+  success: spb/hooks/success.sh
+  failure: spb/hooks/failure.sh
 
 logging:
   level: info
