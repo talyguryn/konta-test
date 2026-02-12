@@ -1,0 +1,20 @@
+services:
+  whoami-guryn-ru:
+    labels:
+      - konta.managed=true
+      - traefik.http.routers.whoami-guryn-ru.rule=Host(`whoami.guryn.ru`)
+      - traefik.http.routers.whoami-guryn-ru.entrypoints=https
+      - traefik.http.routers.whoami-guryn-ru.service=whoami-guryn-ru
+      - traefik.http.services.whoami-guryn-ru.loadbalancer.server.port=80
+      - traefik.http.routers.whoami-guryn-ru.tls=true
+      - traefik.http.routers.whoami-guryn-ru.tls.certresolver=letsencrypt
+    image: containous/whoami
+    restart: unless-stopped
+    networks:
+      - traefik
+    deploy:
+      replicas: 3
+
+networks:
+  traefik:
+    external: true
