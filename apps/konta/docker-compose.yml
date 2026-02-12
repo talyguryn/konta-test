@@ -23,8 +23,8 @@ services:
       start_period: 40s
     networks:
       - traefik
-    deploy:
-      replicas: 3
+    # deploy:
+    #   replicas: 3
 
 networks:
   traefik:
